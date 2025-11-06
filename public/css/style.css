@@ -1,0 +1,473 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-color: #00d4ff;
+    --secondary-color: #7b2cbf;
+    --success-color: #00ff88;
+    --warning-color: #ffaa00;
+    --danger-color: #ff3366;
+    --bg-dark: #0a0e27;
+    --bg-card: #1a1f3a;
+    --bg-card-hover: #242a47;
+    --text-primary: #ffffff;
+    --text-secondary: #a0a8c5;
+    --border-color: #2d3561;
+    --shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+    --glow: 0 0 20px rgba(0, 212, 255, 0.3);
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, var(--bg-dark) 0%, #1a1a2e 100%);
+    color: var(--text-primary);
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.container {
+    max-width: 1600px;
+    margin: 0 auto;
+}
+
+/* Header */
+.header {
+    background: var(--bg-card);
+    padding: 25px 30px;
+    border-radius: 15px;
+    margin-bottom: 30px;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header h1 {
+    font-size: 2em;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.header-controls {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.status {
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 0.9em;
+    font-weight: 600;
+    background: var(--bg-dark);
+    border: 1px solid var(--border-color);
+}
+
+.status.connected {
+    color: var(--success-color);
+    border-color: var(--success-color);
+    box-shadow: 0 0 15px rgba(0, 255, 136, 0.3);
+}
+
+.status.disconnected {
+    color: var(--danger-color);
+    border-color: var(--danger-color);
+}
+
+.btn-export {
+    padding: 10px 20px;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    border: none;
+    border-radius: 25px;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 1em;
+}
+
+.btn-export:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--glow);
+}
+
+/* Dashboard Grid */
+.dashboard {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 25px;
+    margin-bottom: 30px;
+}
+
+/* Card Styles */
+.card {
+    background: var(--bg-card);
+    border-radius: 15px;
+    padding: 25px;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border-color);
+    transition: all 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
+    border-color: var(--primary-color);
+}
+
+.card h2 {
+    font-size: 1.4em;
+    margin-bottom: 20px;
+    color: var(--primary-color);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* System Info */
+.system-info {
+    grid-column: 1 / -1;
+}
+
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 15px;
+}
+
+.info-item, .info-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px;
+    background: var(--bg-dark);
+    border-radius: 8px;
+    border-left: 3px solid var(--primary-color);
+}
+
+.label {
+    color: var(--text-secondary);
+    font-weight: 600;
+}
+
+.value {
+    color: var(--text-primary);
+    font-weight: 700;
+}
+
+.temp {
+    color: var(--warning-color);
+}
+
+/* Metric Display */
+.metric-display {
+    text-align: center;
+    margin: 20px 0;
+    padding: 20px;
+    background: linear-gradient(135deg, rgba(0, 212, 255, 0.1), rgba(123, 44, 191, 0.1));
+    border-radius: 10px;
+    border: 1px solid var(--border-color);
+}
+
+.metric-value {
+    font-size: 3em;
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--primary-color), var(--success-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.metric-label {
+    color: var(--text-secondary);
+    font-size: 0.9em;
+    margin-top: 5px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* CPU Info */
+.cpu-info {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+/* Memory Details */
+.memory-details {
+    display: flex;
+    justify-content: space-around;
+    margin: 20px 0;
+}
+
+.detail-item {
+    text-align: center;
+    padding: 15px;
+    background: var(--bg-dark);
+    border-radius: 8px;
+    flex: 1;
+    margin: 0 5px;
+}
+
+/* Disk List */
+.disk-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.disk-item {
+    padding: 15px;
+    background: var(--bg-dark);
+    border-radius: 8px;
+    border-left: 3px solid var(--primary-color);
+}
+
+.disk-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.disk-name {
+    font-weight: 600;
+    color: var(--primary-color);
+}
+
+.disk-usage {
+    color: var(--text-secondary);
+}
+
+.progress-bar {
+    height: 8px;
+    background: var(--bg-card);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--success-color), var(--primary-color));
+    transition: width 0.5s ease;
+    border-radius: 4px;
+}
+
+.progress-fill.high {
+    background: linear-gradient(90deg, var(--warning-color), var(--danger-color));
+}
+
+/* Network Stats */
+.network-stats {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.stat-item {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 20px;
+    background: var(--bg-dark);
+    border-radius: 10px;
+}
+
+.stat-icon {
+    font-size: 2.5em;
+}
+
+.stat-label {
+    color: var(--text-secondary);
+    font-size: 0.9em;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.stat-value {
+    font-size: 1.5em;
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+/* GPU List */
+.gpu-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.gpu-item {
+    padding: 15px;
+    background: var(--bg-dark);
+    border-radius: 8px;
+    border-left: 3px solid var(--secondary-color);
+}
+
+.gpu-model {
+    font-weight: 600;
+    color: var(--secondary-color);
+    margin-bottom: 8px;
+}
+
+.gpu-details {
+    display: flex;
+    justify-content: space-between;
+    color: var(--text-secondary);
+    font-size: 0.9em;
+}
+
+/* Processes */
+.process-stats {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.stat {
+    flex: 1;
+    padding: 15px;
+    background: var(--bg-dark);
+    border-radius: 8px;
+    text-align: center;
+    font-weight: 600;
+}
+
+.stat span {
+    color: var(--primary-color);
+    font-size: 1.3em;
+    display: block;
+    margin-top: 5px;
+}
+
+.process-table {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+thead {
+    background: var(--bg-dark);
+}
+
+th {
+    padding: 12px;
+    text-align: left;
+    color: var(--primary-color);
+    font-weight: 600;
+    border-bottom: 2px solid var(--border-color);
+}
+
+td {
+    padding: 10px 12px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+tbody tr:hover {
+    background: var(--bg-card-hover);
+}
+
+/* Battery */
+.battery-info {
+    text-align: center;
+}
+
+.battery-status {
+    padding: 30px;
+    background: var(--bg-dark);
+    border-radius: 10px;
+}
+
+.battery-percent {
+    font-size: 3em;
+    font-weight: 700;
+    color: var(--success-color);
+}
+
+.battery-state {
+    color: var(--text-secondary);
+    margin-top: 10px;
+    font-size: 1.1em;
+}
+
+/* Charts */
+canvas {
+    margin-top: 20px;
+    max-height: 250px;
+}
+
+/* Footer */
+.footer {
+    text-align: center;
+    padding: 20px;
+    color: var(--text-secondary);
+    background: var(--bg-card);
+    border-radius: 15px;
+    border: 1px solid var(--border-color);
+}
+
+#lastUpdate {
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .dashboard {
+        grid-template-columns: 1fr;
+    }
+
+    .header {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .network-stats {
+        flex-direction: column;
+    }
+
+    .info-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Animations */
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+}
+
+.loading {
+    animation: pulse 1.5s ease-in-out infinite;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-dark);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--primary-color);
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--secondary-color);
+}
